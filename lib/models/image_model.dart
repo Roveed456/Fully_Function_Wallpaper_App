@@ -1,4 +1,4 @@
-class Images {
+class Photo {
   int id;
   int width;
   int height;
@@ -7,8 +7,9 @@ class Images {
   String photographerUrl;
   int photographerId;
   Src src;
+  bool liked;
 
-  Images(
+  Photo(
       {this.id,
       this.width,
       this.height,
@@ -16,9 +17,10 @@ class Images {
       this.photographer,
       this.photographerUrl,
       this.photographerId,
-      this.src});
+      this.src,
+      this.liked});
 
-  Images.fromJson(Map<String, dynamic> json) {
+  Photo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     width = json['width'];
     height = json['height'];
@@ -27,6 +29,7 @@ class Images {
     photographerUrl = json['photographer_url'];
     photographerId = json['photographer_id'];
     src = json['src'] != null ? new Src.fromJson(json['src']) : null;
+    liked = json['liked'];
   }
 
   Map<String, dynamic> toJson() {
@@ -41,6 +44,7 @@ class Images {
     if (this.src != null) {
       data['src'] = this.src.toJson();
     }
+    data['liked'] = this.liked;
     return data;
   }
 }
